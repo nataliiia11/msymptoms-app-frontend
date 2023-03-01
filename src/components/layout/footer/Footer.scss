@@ -1,0 +1,26 @@
+Link {
+    margin-left: 5%;
+    background-color: grey;
+    padding: 5%;
+    display: flex;
+
+}
+
+
+.legal-buttons {
+    display: flex;
+    max-width: 1000px;
+    justify-content: center;
+    width: 100%;
+
+}
+@media (max-width: 480px) {
+
+    .legal-buttons {
+        display: grid;
+        
+    }
+    .t-and-c-button {
+        width: 70vw;
+    }
+}

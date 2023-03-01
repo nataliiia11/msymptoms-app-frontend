@@ -1,0 +1,56 @@
+.symptomslistcontainer {
+    background-color: white;
+    width: 70%;
+    border: 2px;
+    position: relative;
+    overflow: initial;
+    width: 96%;
+    block-size: fit-content;
+    margin-right: 10%;
+    opacity: 100%;  
+    margin-left: 1%;
+}
+
+.contact {
+    padding: 4rem;
+}
+.card {
+    padding: 4rem; 
+}
+
+
+
+.symptomcards {
+    display: inline;
+}
+
+.ant-card-body {
+    width: 50%;
+    padding-right: 13%;
+}
+
+.ant-select .ant-select-selector {
+    margin-left: 20%;
+    margin: 1%;
+}
+
+.formfields {
+    margin-left: 50px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+#addbutton {
+    width: 80%;
+    margin-bottom: 15px;
+
+}
+
+.inputform {
+    box-shadow: none;
+}
+
+#imagesymptomsformid {
+    width: 45%;
+}

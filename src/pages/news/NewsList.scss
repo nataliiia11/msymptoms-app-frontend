@@ -1,0 +1,30 @@
+body {
+    background-color: #fdf5cd;
+
+}
+
+html, body
+{
+    height: 100%;
+    width: 100%;
+}
+
+.news-container {
+    background-color: white;
+    width: 70%;
+    border: 2px;
+    position: relative;
+    overflow: initial;
+    border: 1px solid;
+    width: 100%;
+    block-size: fit-content;
+    margin-right: 10%;
+    opacity: 100%;
+    box-shadow: 5px 10px;
+    margin-left: 1%;
+}
+
+.news-container-title {
+    margin: 10px;
+
+}
