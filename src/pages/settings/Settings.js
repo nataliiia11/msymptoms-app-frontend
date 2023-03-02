@@ -16,11 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
-import {
-  changePassword,
-  logout,
-  RESET,
-} from "../../redux/features/auth/authSlice";
+import { changePassword, logout } from "../../redux/features/auth/authSlice";
 import { Spinner } from "../../components/loader/Loader";
 import { sendAutomatedEmail } from "../../redux/features/email/emailSlice";
 import { Form, Button, ConfigProvider, Input } from "antd";
@@ -50,8 +46,6 @@ const Settings = () => {
   };
 
   const updatePassword = async (e) => {
-    // e.preventDefault();
-
     if (!oldPassword || !password || !password2) {
       return toast.error("All fields are required");
     }
