@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API_URL = `${BACKEND_URL}/api/`;
+const API_URL = `https://msymptoms-backend.onrender.com/api/`;
 
 // user api
 export const responseRegister = async (userData) => {
