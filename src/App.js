@@ -76,15 +76,15 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route
-            path={appPaths.home}
+            path="/"
             element={
               <Layout>
                 <Home />
               </Layout>
             }
           />
-          <Route path={appPaths.login} element={<Login />} />
-          <Route path={appPaths.register} element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path={appPaths.forgot} element={<Forgot />} />
 
           <Route path={appPaths.notFound} element={<NotFoundPage />} />
@@ -132,7 +132,7 @@ function App() {
           />
 
           <Route
-            path={appPaths.profile}
+            path="/profile"
             element={
               <Layout>
                 <Sidebar>
