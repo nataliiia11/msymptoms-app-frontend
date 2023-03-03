@@ -45,11 +45,6 @@ export const SidebarData = [
     title: "Settings",
     icon: <SettingOutlined classtitle="icon" />,
   },
-  {
-    path: "/medication",
-    title: "Medications",
-    icon: <SettingOutlined classtitle="icon" />,
-  },
 ];
 
 export default SidebarData;

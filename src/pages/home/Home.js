@@ -35,24 +35,24 @@ const Home2 = () => {
           >
             <Form name="login-form">
               <p className="form-title">
-                MSypmtoms tracking application. Get your disease under control.
+                MSypmtoms. Get your disease under control.
               </p>
               <p></p>
               <Form.Item>
                 <p>
-                  Introducing the Symptoms Tracker Web Application - the
+                  Introducing the Symptom tracking Web Application - the
                   ultimate solution for monitoring your health and wellbeing.
-                  With this user-friendly and easy-to-use platform, you can
-                  track and manage your symptoms, stay informed, and make
-                  informed decisions about your health.
+                  With this easy-to-use platform, you can track and manage your
+                  symptoms, stay informed, and make the right decisions about
+                  your health.
                 </p>
               </Form.Item>
               <Form.Item>
                 <p>
-                  This powerful tool enables you to log and monitor a variety of
+                  This powerful tool enables you to log and analyse a variety of
                   symptoms including headaches, body pain, fatigue, and many
-                  others. You'll have all the tools you need to stay informed
-                  and in control of your health.
+                  others. You'll have all the tools you need to stay in control
+                  of your health.
                 </p>
               </Form.Item>
               <Form.Item>
