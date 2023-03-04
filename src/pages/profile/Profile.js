@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 import "./Profile.scss";
 import { Form, ConfigProvider } from "antd";
 import image from "../../assets/Sandy_Bus-01_Single-10.jpg";
-import UpdateProfile from "../../components/profile/verificationBanner/UpdateProfile";
+import UpdateProfile from "../../components/profile/UpdateProfile";
 export const shortenText = (text, n) => {
   if (text.length > n) {
     const shoretenedText = text.substring(0, n).concat("...");
