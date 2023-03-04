@@ -87,8 +87,6 @@ const AddSymptoms = () => {
     try {
       const updateSymptomData = { id, formData };
       await dispatch(updateSymptom(updateSymptomData));
-
-      await dispatch(updateSymptom(updateSymptomData));
       setFormData({ ...formData, name: "" });
       setIsEditing(false);
       getAllSymptoms();

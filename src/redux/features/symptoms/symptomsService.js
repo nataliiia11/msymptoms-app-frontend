@@ -50,8 +50,8 @@ const createSymptom = async (formData) => {
   return response;
 };
 
-const updateSymptom = async (id, formData) => {
-  const response = await responseUpdateSymptom(id, formData);
+const updateSymptom = async (updateSymptomData) => {
+  const response = await responseUpdateSymptom(updateSymptomData);
   return response;
 };
 

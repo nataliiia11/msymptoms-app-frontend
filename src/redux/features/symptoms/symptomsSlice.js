@@ -164,8 +164,9 @@ export const createSymptom = createAsyncThunk(
 
 export const updateSymptom = createAsyncThunk(
   "symptoms/updateSymptom",
-  async (id, formData, thunkAPI) => {
+  async (updateSymptomData, thunkAPI) => {
     try {
+      const { id, formData } = updateSymptomData;
       const response = await symptomsService.updateSymptom(id, formData);
       return response.data;
     } catch (error) {
