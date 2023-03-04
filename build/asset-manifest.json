@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e58ee524.css",
-    "main.js": "/static/js/main.6443876b.js",
+    "main.js": "/static/js/main.d401c703.js",
     "static/media/Sandy_Tech-24_Single-02.jpg": "/static/media/Sandy_Tech-24_Single-02.d9404c51efc6a3ab15af.jpg",
     "static/media/Sandy_Bus-32_Single-12.jpg": "/static/media/Sandy_Bus-32_Single-12.0f0ecd3f9e44367bf88d.jpg",
     "static/media/Sandy_Bus-01_Single-10.jpg": "/static/media/Sandy_Bus-01_Single-10.fe8550f7693a496ab7b9.jpg",
@@ -14,10 +14,10 @@
     "static/media/logo.png": "/static/media/logo.bad43516ae1ee95c77a7.png",
     "index.html": "/index.html",
     "main.e58ee524.css.map": "/static/css/main.e58ee524.css.map",
-    "main.6443876b.js.map": "/static/js/main.6443876b.js.map"
+    "main.d401c703.js.map": "/static/js/main.d401c703.js.map"
   },
   "entrypoints": [
     "static/css/main.e58ee524.css",
-    "static/js/main.6443876b.js"
+    "static/js/main.d401c703.js"
   ]
 }
