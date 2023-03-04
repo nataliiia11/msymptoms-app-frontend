@@ -50,17 +50,9 @@ const Profile = () => {
     setFormData({ ...profile, [name]: value });
   };
 
-  const getOneUser = async () => {
-    try {
-      await dispatch(getUser());
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
-
   useEffect(() => {
-    getOneUser();
-  }, []);
+    dispatch(getUser());
+  }, [dispatch]);
 
   const [form] = Form.useForm();
 
