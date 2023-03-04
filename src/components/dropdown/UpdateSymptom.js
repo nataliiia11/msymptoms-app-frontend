@@ -4,18 +4,13 @@ import { Modal, ConfigProvider, InputNumber, Card, Form } from "antd";
 import SelectBodyPart from "../addSymptoms/SelectBodyPart";
 import SelectName from "../addSymptoms/SelectName";
 
-const UpdateSymptom = ({
-  deleteSymptom,
-  updateSymptom,
-  symptom,
-  handleInputChange,
-}) => {
+const UpdateSymptom = ({ updateSymptom, symptom, handleInputChange }) => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = () => {
+  const handleOk = async () => {
     setConfirmLoading(true);
 
     setTimeout(() => {
@@ -23,7 +18,7 @@ const UpdateSymptom = ({
       setConfirmLoading(false);
     }, 2000);
     console.log("handleOk", symptom._id);
-    updateSymptom(symptom._id);
+    await updateSymptom(symptom._id);
   };
 
   const handleCancel = () => {

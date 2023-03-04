@@ -85,9 +85,10 @@ const AddSymptoms = () => {
       return toast.error("Input field cannot be empty.");
     }
     try {
-      await updateSymptom(id, formData);
-      await dispatch(updateSymptom(id, formData));
+      const updateSymptomData = { id, formData };
+      await dispatch(updateSymptom(updateSymptomData));
 
+      await dispatch(updateSymptom(updateSymptomData));
       setFormData({ ...formData, name: "" });
       setIsEditing(false);
       getAllSymptoms();
@@ -169,7 +170,7 @@ const AddSymptoms = () => {
                   <>
                     <div className="symptomcard">
                       <Symptom
-                        key={symptom._id}
+                        key={index}
                         symptom={symptom}
                         bodyPart={symptom.bodyPart}
                         index={index}

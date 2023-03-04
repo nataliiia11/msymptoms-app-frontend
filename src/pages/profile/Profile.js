@@ -19,10 +19,9 @@ import {
 } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 import "./Profile.scss";
-import Notification from "../../components/profile/verificationBanner/Notification";
-import { Form, Button, Input, ConfigProvider } from "antd";
-import TextArea from "antd/es/input/TextArea";
+import { Form, ConfigProvider } from "antd";
 import image from "../../assets/Sandy_Bus-01_Single-10.jpg";
+import UpdateProfile from "../../components/profile/verificationBanner/UpdateProfile";
 export const shortenText = (text, n) => {
   if (text.length > n) {
     const shoretenedText = text.substring(0, n).concat("...");
@@ -41,27 +40,36 @@ const Profile = () => {
     bio: user?.bio || "",
     isVerified: user?.isVerified || false,
   };
+  const [formData, setFormData] = useState(initialState);
   const [profile, setProfile] = useState(initialState);
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
-  const [form] = Form.useForm();
+
+  const { name, email, bio } = profile;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setProfile({ ...profile, [name]: value });
+    setFormData({ ...profile, [name]: value });
   };
 
-  const saveProfile = async (e) => {
+  const getOneUser = async () => {
+    try {
+      await dispatch(getUser());
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getOneUser();
+  }, []);
+
+  const [form] = Form.useForm();
+
+  const saveProfile = async () => {
     try {
       // Save profile to MongoDB
-      const userData = {
-        name: profile.name,
-        bio: profile.bio,
-      };
-      const { TextArea } = Input;
+      //const userData = formData;
 
-      dispatch(updateUser(userData));
+      await dispatch(updateUser(formData));
     } catch (error) {
       toast.error(error.message);
     }
@@ -79,7 +87,7 @@ const Profile = () => {
     }
   }, [user]);
 
-  const onFinish = (values) => {
+  const onFinish = () => {
     saveProfile();
   };
 
@@ -100,53 +108,47 @@ const Profile = () => {
               },
             }}
           >
-            <Form
-              name="login-form"
-              form={form}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-            >
+            <Form name="login-form" form={form}>
               <p className="form-title">Profile</p>
               <p></p>
-              <Form.Item> {!profile.isVerified && <Notification />}</Form.Item>
-              <Form.Item name="name">
-                <Input
-                  placeholder="Please enter your name"
-                  type="text"
-                  name="name"
-                  value={profile?.name}
-                  onChange={handleInputChange}
+              <Form.Item>
+                <ul>
+                  <h4 style={{ color: "#d3d3d3" }}>Name </h4>
+                  <div
+                    style={{
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <li>
+                      <h3>{name}</h3>
+                    </li>
+                  </div>
+                  <h4 style={{ color: "#d3d3d3" }}>Email </h4>
+                  <div
+                    style={{
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <li>
+                      <h3>{email}</h3>
+                    </li>
+                  </div>
+                  <h4 style={{ color: "#d3d3d3" }}>Bio </h4>
+                  <div
+                    style={{
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <li>
+                      <h3>{bio}</h3>
+                    </li>
+                  </div>
+                </ul>
+                <UpdateProfile
+                  saveProfile={saveProfile}
+                  handleInputChange={handleInputChange}
+                  profile={profile}
                 />
-              </Form.Item>
-
-              <Form.Item>
-                <Input
-                  type="email"
-                  name="email"
-                  value={profile?.email}
-                  onChange={handleInputChange}
-                  disabled
-                />
-              </Form.Item>
-              <Form.Item>
-                <TextArea
-                  showCount
-                  maxLength={100}
-                  style={{ height: 120, marginBottom: 24 }}
-                  name="bio"
-                  value={profile?.bio}
-                  onChange={handleInputChange}
-                ></TextArea>
-              </Form.Item>
-
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                >
-                  Update Profile
-                </Button>
               </Form.Item>
             </Form>
           </ConfigProvider>

@@ -6,6 +6,16 @@ import { CSVLink } from "react-csv";
 import { useReactToPrint } from "react-to-print";
 import { FaFilePdf } from "react-icons/fa";
 import { Input } from "antd";
+import { useDispatch } from "react-redux";
+
+import {
+  RESET,
+  getSymptoms,
+  deleteSymptom,
+  updateSymptom,
+  getSymptomsByDateRange,
+  getSymptomsByName,
+} from "../../redux/features/symptoms/symptomsSlice";
 import DropdownMenu from "../../components/dropdown/DropdownMenu";
 import "./Symptom.scss";
 
@@ -48,13 +58,15 @@ const SymptomsList = () => {
     date: new Date(),
     note: "",
   });
+  const dispatch = useDispatch();
 
-  const getSymptoms = async () => {
+  const getAllSymptoms = async () => {
     setIsLoading(true);
     try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/api/symptoms`
-      );
+      const data = await dispatch(getSymptoms()).then((action) => {
+        const symptomsData = action.payload;
+        return symptomsData;
+      });
       setDataSource(data);
       setIsLoading(false);
     } catch (error) {
@@ -81,14 +93,11 @@ const SymptomsList = () => {
       if (dates[0] && dates[1]) {
         const startDate = new Date(dates[0]).toISOString();
         const endDate = new Date(dates[1]).toISOString();
-
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_BACKEND_URL}/api/symptoms/filter`,
-          {
-            data: {
-              endDate,
-              startDate,
-            },
+        const symptomsDates = { endDate, startDate };
+        const data = await dispatch(getSymptomsByDateRange(symptomsDates)).then(
+          (action) => {
+            const symptomsData = action.payload;
+            return symptomsData;
           }
         );
 
@@ -102,25 +111,23 @@ const SymptomsList = () => {
     }
   };
 
-  console.log("formData", formData);
-  const updateSymptom = async (id) => {
+  const updateOneSymptom = async (id) => {
+    console.log("id", id);
+    console.log("formData", formData);
     try {
-      await axios.put(
-        `${process.env.REACT_APP_BACKEND_URL}/api/symptoms/${id}`,
-        formData
-      );
-      setFormData({ name: "", bodyPart: "", intensity: "" });
+      const updateSymptomData = { id, formData };
+      await dispatch(updateSymptom(updateSymptomData));
+      setFormData({ ...formData, name: "" });
       getSymptoms();
     } catch (error) {
       toast.error(error.message);
     }
   };
 
-  const deleteSymptom = async (id) => {
+  const deleteOneSymptom = async (id) => {
     try {
-      await axios.delete(
-        `${process.env.REACT_APP_BACKEND_URL}/api/symptoms/${id}`
-      );
+      await dispatch(deleteSymptom(id));
+
       getSymptoms();
     } catch (error) {
       toast.error(error.message);
@@ -134,10 +141,10 @@ const SymptomsList = () => {
 
   const onSearch = async (value) => {
     try {
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/api/symptoms/name`,
-        { name: value }
-      );
+      const data = await dispatch(getSymptomsByName(value)).then((action) => {
+        const symptomsData = action.payload;
+        return symptomsData;
+      });
 
       setDataSource(data);
     } catch (error) {
@@ -147,7 +154,7 @@ const SymptomsList = () => {
   };
 
   useEffect(() => {
-    getSymptoms();
+    getAllSymptoms();
   }, []);
 
   return (
@@ -216,8 +223,8 @@ const SymptomsList = () => {
                           <>
                             <DropdownMenu
                               symptom={record}
-                              deleteSymptom={deleteSymptom}
-                              updateSymptom={updateSymptom}
+                              deleteSymptom={deleteOneSymptom}
+                              updateSymptom={updateOneSymptom}
                               handleInputChange={handleInputChange}
                             />
                           </>
