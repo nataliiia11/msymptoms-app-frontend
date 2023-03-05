@@ -26,14 +26,66 @@ $ git clone https://github.com/nataliiia11/msymptoms-backend.git
 $ yarn # or npm i
 ```
 ## project structure
+### FRONTEND
 ```terminal
+build
+public
 LICENSE
 package.json
-backend/
-   package.json
-   .env 
-frontend/
-   package.json
+.env
+src/
+   assets
+   components/
+        addSymptoms
+        authorisation
+        card
+        dashboard
+        dropdown
+        layout
+        loader
+        news
+        profile
+        protect
+        settings
+    customHook
+    pages/
+        404
+        addSymptoms
+        authorisation
+        contact
+        dashboard
+        home
+        legal
+        news
+        profile
+        settings
+        symptomsList
+    redux/
+        api
+        features/
+            auth
+            email
+            news
+            store
+        store.js
+    App.js
+    index.css
+    index.js
+...
+```
+### BACKEND
+
+```terminal
+controllers
+middleware
+models
+routers
+utils
+views
+.gitgnore
+README.md
+package.json
+server.js
 ...
 ```
 
@@ -46,11 +98,14 @@ frontend/
 
 The frontend and backend should be run separately in two terminals.
 ## FRONTEND usage(PORT: 3000)
+
 ```terminal
 $ cd frontend   
 $ yarn # or npm i
 $ npm start
 ```
+.env file should contain the following 
+REACT_APP_BACKEND_URL
 
 ## BACKEND usage(PORT: 5001)
 
@@ -175,6 +230,13 @@ Dashboard
 
 
 Email Me: azarnyhna@gmail.com
+
+# Web Sited of this project
+###FRONTEND
+https://msymptoms-app.onrender.com/
+
+###BACKEND
+https://msymptoms-backend.onrender.com
 
 ## Author
 Nataliia Azarnykh
