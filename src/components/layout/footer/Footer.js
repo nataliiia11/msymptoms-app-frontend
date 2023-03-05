@@ -1,6 +1,6 @@
-import { Space, ConfigProvider, Button } from "antd";
-import Link from "antd/es/typography/Link";
+import { Space, ConfigProvider } from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -15,13 +15,32 @@ const Footer = () => {
             },
           }}
         >
-          <div className="legal-buttons">
+          <div className="">
             <Space size={10}>
-              <Button className="t-and-c-button" to="/terms-and-conditions">
+              <Link
+                style={{
+                  marginLeft: "20px",
+                  marginRight: "20px",
+                  color: "#7FA62D",
+                  fontSize: "16px",
+                }}
+                className="t-and-c-button"
+                to="/terms-and-conditions"
+              >
                 Terms and Conditions
-              </Button>
+              </Link>
             </Space>
-            <Button to="/privacy-policy">Privacy Policy</Button>
+            <Link
+              style={{
+                marginLeft: "20px",
+                marginRight: "20px",
+                color: "#7FA62D",
+                fontSize: "16px",
+              }}
+              to="/privacy-policy"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </ConfigProvider>
       </div>

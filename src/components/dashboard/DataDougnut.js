@@ -5,14 +5,10 @@ import { Doughnut } from "react-chartjs-2";
 import { toast } from "react-toastify";
 import { DatePicker, ConfigProvider } from "antd";
 import { CategoryScale } from "chart.js";
-import { Chart as ReactChart } from "react-chartjs-2";
 import StreamingPlugin from "chartjs-plugin-streaming";
 import Chart from "chart.js/auto";
 
-import {
-  getSymptoms,
-  getSymptomsByDateRange,
-} from "../../redux/features/symptoms/symptomsSlice";
+import { getSymptoms } from "../../redux/features/symptoms/symptomsSlice";
 import { useDispatch } from "react-redux";
 
 import "./Dashboard.scss";

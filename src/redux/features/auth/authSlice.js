@@ -1,3 +1,14 @@
+/*
+  =========================================================
+  * ZINOTRUST ACADEMY 
+  =========================================================
+  * Email: zinotrust@gmail.com
+  * Copyright 2021 AKPAREVA EWOMAZINO
+  * 
+  =========================================================
+  * This code was reviewed and changed by Nataliia Azarnykh
+  * for non-commercials study purposes
+*/
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import authService from "./authService";
@@ -177,8 +188,6 @@ export const forgotPassword = createAsyncThunk(
 export const resetPassword = createAsyncThunk(
   "auth/resetPassword",
   async ({ password, resetToken }, thunkAPI) => {
-    console.log("password", resetToken);
-
     try {
       return await authService.resetPassword(password, resetToken);
     } catch (error) {
@@ -196,7 +205,6 @@ export const resetPassword = createAsyncThunk(
 export const deleteUser = createAsyncThunk(
   "auth/deleteUser",
   async (id, thunkAPI) => {
-    console.log("Call delete user", id);
     try {
       return await authService.deleteUser(id);
     } catch (error) {
@@ -285,7 +293,6 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.user = action.payload;
         toast.success("Registration Successful");
-        console.log(action.payload);
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
@@ -303,7 +310,6 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.user = action.payload;
         toast.success("Login Successful");
-        console.log(action.payload);
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
@@ -338,13 +344,11 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isLoggedIn = action.payload;
-        console.log(action.payload);
       })
       .addCase(getLoginStatus.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        console.log(action.payload);
       })
       .addCase(getUser.pending, (state) => {
         state.isLoading = true;
@@ -385,14 +389,12 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.message = action.payload;
         toast.success(action.payload);
-        console.log("sendVerificationEmail", action.payload);
       })
       .addCase(sendVerificationEmail.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
         toast.error(action.payload);
-        console.log("sendVerificationEmail", action.payload);
       })
       .addCase(verifyUser.pending, (state) => {
         state.isLoading = true;

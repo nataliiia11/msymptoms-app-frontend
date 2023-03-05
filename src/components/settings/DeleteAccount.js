@@ -35,7 +35,6 @@ const DeleteAccount = () => {
       const user = await dispatch(getUser()).then((action) => {
         return action.payload;
       });
-      console.log("handleOk", user);
       await dispatch(deleteUser(user._id));
 
       setConfirmLoading(true);

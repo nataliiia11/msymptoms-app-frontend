@@ -17,7 +17,6 @@ const UpdateSymptom = ({ updateSymptom, symptom, handleInputChange }) => {
       setOpen(false);
       setConfirmLoading(false);
     }, 2000);
-    console.log("handleOk", symptom._id);
     await updateSymptom(symptom._id);
   };
 

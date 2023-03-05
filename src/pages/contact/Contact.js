@@ -44,7 +44,6 @@ const Contact = () => {
 
   const onFinish = (values) => {
     sendEmail();
-    console.log("Success:", values);
     form.validateFields();
   };
 

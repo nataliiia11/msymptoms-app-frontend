@@ -47,10 +47,7 @@ const Reset = () => {
     if (password !== password2) {
       return toast.error("Passwords do not match");
     }
-    console.log(password);
-    console.log(message);
     await dispatch(resetPassword({ password, resetToken })).then((action) => {
-      console.log("action.payload", action.payload);
       return action.payload;
     });
   };
@@ -63,7 +60,6 @@ const Reset = () => {
   }, [dispatch, navigate, message, isSuccess]);
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
     return toast.error("Something went wrong, please try again");
   };
   return (

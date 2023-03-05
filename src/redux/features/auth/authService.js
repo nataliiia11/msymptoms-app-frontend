@@ -1,3 +1,14 @@
+/*
+  =========================================================
+  * ZINOTRUST ACADEMY 
+  =========================================================
+  * Email: zinotrust@gmail.com
+  * Copyright 2021 AKPAREVA EWOMAZINO
+  * 
+  =========================================================
+  * This code was reviewed and changed by Nataliia Azarnykh
+  * for non-commercials study purposes
+*/
 import {
   responseChangePassword,
   responseDeleteUser,
@@ -33,7 +44,6 @@ const register = async (userData) => {
 
 const login = async (userData) => {
   const response = await responseLogin(userData);
-  console.log("response.data", response.data);
   return response.data;
 };
 

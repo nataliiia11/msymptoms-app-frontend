@@ -27,7 +27,7 @@ import SymptomsList from "./pages/symptomsList/SymptomList";
 import NewsList from "./pages/news/NewsList";
 import Contact from "./pages/contact/Contact";
 import NotFoundPage from "./pages/404/404";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 import AddSymptoms from "./pages/addSymptoms/AddSymptoms";
 import Reset from "./pages/authorisation/resetPassword/Reset";
 export const URL = process.env.REACT_APP_BACKEND_URL;

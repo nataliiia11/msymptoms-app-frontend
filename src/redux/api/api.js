@@ -2,7 +2,6 @@ import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API_URL = `${BACKEND_URL}/api/`;
-console.log("BACKEND_URL", BACKEND_URL);
 // user api
 export const responseRegister = async (userData) => {
   const response = await axios.post(API_URL + "users/register", userData);
@@ -26,7 +25,6 @@ export const responseLoginStatus = async () => {
 
 export const responseGetUser = async () => {
   const response = await axios.get(API_URL + "users/getUser");
-  console.log("api response", response);
   return response;
 };
 

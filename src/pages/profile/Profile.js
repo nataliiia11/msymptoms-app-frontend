@@ -79,13 +79,6 @@ const Profile = () => {
     }
   }, [user]);
 
-  const onFinish = () => {
-    saveProfile();
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   return (
     <>
       <div className="login-page">

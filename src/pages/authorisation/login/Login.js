@@ -78,7 +78,6 @@ const Login = () => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
     loginUser();
-    console.log("Success:", values);
     form.validateFields();
   };
 

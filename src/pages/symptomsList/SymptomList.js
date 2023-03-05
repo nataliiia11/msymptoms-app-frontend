@@ -71,7 +71,6 @@ const SymptomsList = () => {
       setIsLoading(false);
     } catch (error) {
       toast.error(error.message);
-      console.log(error);
       setIsLoading(false);
     }
   };
@@ -107,13 +106,10 @@ const SymptomsList = () => {
       }
     } catch (error) {
       toast.error(error.message);
-      console.log(error);
     }
   };
 
   const updateOneSymptom = async (id) => {
-    console.log("id", id);
-    console.log("formData", formData);
     try {
       const updateSymptomData = { id, formData };
       await dispatch(updateSymptom(updateSymptomData));
@@ -149,7 +145,6 @@ const SymptomsList = () => {
       setDataSource(data);
     } catch (error) {
       toast.error(error.message);
-      console.log(error);
     }
   };
 

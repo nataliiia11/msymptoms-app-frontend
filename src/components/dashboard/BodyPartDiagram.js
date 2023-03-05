@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import { Doughnut } from "react-chartjs-2";
 import { toast } from "react-toastify";
-import { DatePicker, ConfigProvider, Card } from "antd";
+import { DatePicker, ConfigProvider } from "antd";
 import { CategoryScale } from "chart.js";
 import { useDispatch } from "react-redux";
+import Card from "../../components/card/Card";
 import Chart from "chart.js/auto";
 import StreamingPlugin from "chartjs-plugin-streaming";
 import {
@@ -57,7 +57,6 @@ const BodyPartDiagram = () => {
         );
 
         if (data) {
-          console.log(data);
           setDataSource(data);
           setIsLoading(false);
         } else {
@@ -119,7 +118,7 @@ const BodyPartDiagram = () => {
   };
 
   return (
-    <div style={{ width: "40%", height: "20%" }}>
+    <div style={{ width: "40%", height: "30%" }}>
       <ConfigProvider
         theme={{
           token: {

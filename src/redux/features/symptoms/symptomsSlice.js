@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { identity } from "lodash";
 import { toast } from "react-toastify";
 import symptomsService from "./symptomsService";
 
@@ -149,7 +148,6 @@ export const createSymptom = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await symptomsService.createSymptom(formData);
-      console.log("createSymptom", response.data);
       return response.data;
     } catch (error) {
       const message =
@@ -168,8 +166,6 @@ export const updateSymptom = createAsyncThunk(
   async (updateSymptomData, thunkAPI) => {
     try {
       const { id, formData } = updateSymptomData;
-      console.log("Slice", id);
-      console.log("Slice", formData);
 
       const response = await symptomsService.updateSymptom(id, formData);
       return response.data;

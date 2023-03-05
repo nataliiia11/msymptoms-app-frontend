@@ -10,7 +10,6 @@ const NewsList = () => {
     const getArticles = async () => {
       const response = await getNews();
       setArticles(response.articles);
-      console.log(response);
     };
     getArticles();
   }, []);

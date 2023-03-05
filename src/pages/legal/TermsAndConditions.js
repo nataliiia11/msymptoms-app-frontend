@@ -17,8 +17,17 @@ const TermsAndConditions = () => {
   };
   return (
     <div>
-      <div styles={{ backgroundColor: "white" }}>
-        {Parser(`<style>
+      <Form
+        style={{
+          backgroundColor: "#ffff",
+          marginLeft: "20px",
+          marginRight: "20px",
+          marginTop: "50px",
+        }}
+      >
+        <Form.Item>
+          {" "}
+          {Parser(`<style>
   [data-custom-class='body'], [data-custom-class='body'] * {
           background: transparent !important;
         }
@@ -213,24 +222,15 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">In order to resol
       <div style="color: #595959;font-size: 14px;font-family: Arial;padding-top:16px;">
       These terms of use were created using Termly's <a style="color: rgb(48, 48, 241) !important;" href="https://termly.io/products/terms-and-conditions-generator/">Terms and Conditions Generator</a>.
       </div>`)}
-      </div>
+        </Form.Item>
+      </Form>
       <div className="consentform">
-        <Form type={"checkbox"}>
-          <Checkbox
-            type={"checkbox"}
-            checked={!check}
-            onChange={() => {
-              setCheck(!check);
-            }}
-          />
-          <p>I read and accept Privacy Policy.</p>
-        </Form>
         <Button
           className="--btn --btn-primary"
           id="addbutton"
           onClick={navigateToRegistration}
         >
-          Back to Registration
+          Back
         </Button>
       </div>
     </div>
