@@ -40,6 +40,7 @@ const SidebarElement = () => {
               }}
             >
               <Button
+                aria-label="Opens the page of the application"
                 type="primary"
                 onClick={toggleCollapsed}
                 style={{

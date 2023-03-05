@@ -15,6 +15,7 @@ import "./Contact.scss";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Form, Button, Input, ConfigProvider } from "antd";
+import { DocumentTitle } from "react-document-title";
 import image from "../../assets/Wavy-C_Bus-07_Single-08.jpg";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -51,68 +52,71 @@ const Contact = () => {
     console.log("Failed:", errorInfo);
   };
   return (
-    <>
-      <div className="login-page">
-        <div className="login-box-profile">
-          <div className="illustration-wrapper">
-            <img
-              src={image}
-              alt="Cup of coffee, a pen and a computer monitor with web site"
-            />
-          </div>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#7FA62D",
-              },
-            }}
-          >
-            <Form
-              name="login-form"
-              form={form}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
+    <DocumentTitle title="Contact page">
+      <>
+        <div className="login-page">
+          <div className="login-box-profile">
+            <div className="illustration-wrapper">
+              <img
+                src={image}
+                alt="Cup of coffee, a pen and a computer monitor with web site"
+              />
+            </div>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#7FA62D",
+                },
+              }}
             >
-              <p className="form-title">Contact Us</p>
-              <p></p>
-              <Form.Item>
-                <Input
-                  type="text"
-                  name="subject"
-                  placeholder="Subject"
-                  required
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                />
-              </Form.Item>
+              <Form
+                name="login-form"
+                form={form}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+              >
+                <p className="form-title">Contact Us</p>
+                <p></p>
+                <Form.Item>
+                  <Input
+                    type="text"
+                    name="subject"
+                    placeholder="Subject"
+                    required
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                  />
+                </Form.Item>
 
-              <Form.Item>
-                <TextArea
-                  showCount
-                  maxLength={100}
-                  cols="30"
-                  rows="10"
-                  name="message"
-                  required
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                ></TextArea>
-              </Form.Item>
+                <Form.Item>
+                  <TextArea
+                    showCount
+                    maxLength={100}
+                    cols="30"
+                    rows="10"
+                    name="message"
+                    required
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  ></TextArea>
+                </Form.Item>
 
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                >
-                  Send Message
-                </Button>
-              </Form.Item>
-            </Form>
-          </ConfigProvider>
+                <Form.Item>
+                  <Button
+                    aria-label="Sends an email to the customer support"
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                  >
+                    Send Message
+                  </Button>
+                </Form.Item>
+              </Form>
+            </ConfigProvider>
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    </DocumentTitle>
   );
 };
 

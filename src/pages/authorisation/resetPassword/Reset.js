@@ -16,6 +16,7 @@ import { Form, Button, ConfigProvider } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { resetPassword, RESET } from "../../../redux/features/auth/authSlice";
+import { DocumentTitle } from "react-document-title";
 import Header from "../../../components/layout/header/Header";
 import PasswordInput from "../../../components/authorisation/passwordInput/PasswordInput";
 import "../Auth.scss";
@@ -63,59 +64,62 @@ const Reset = () => {
     return toast.error("Something went wrong, please try again");
   };
   return (
-    <>
-      <Header />
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#7FA62D",
-          },
-        }}
-      >
-        <div className="login-page">
-          <div className="login-box-profile">
-            <div className="illustration-wrapper">
-              <img
-                src={image}
-                alt="Man holding pencil demonstrate pages and ideas."
-              />
+    <DocumentTitle title="Reset password page">
+      <>
+        <Header />
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#7FA62D",
+            },
+          }}
+        >
+          <div className="login-page">
+            <div className="login-box-profile">
+              <div className="illustration-wrapper">
+                <img
+                  src={image}
+                  alt="Man holding pencil demonstrate pages and ideas."
+                />
+              </div>
+              <Form name="login-form" onFinishFailed={onFinishFailed}>
+                <p className="form-title">Reset Password</p>
+                <p></p>
+                <Form.Item>
+                  <PasswordInput
+                    placeholder="Password"
+                    name="password"
+                    value={password}
+                    onChange={handleInputChange}
+                    onPaste={handleInputChange}
+                  />
+                </Form.Item>
+                <Form.Item>
+                  <PasswordInput
+                    placeholder="Confirm Password"
+                    name="password2"
+                    value={password2}
+                    onChange={handleInputChange}
+                    onPaste={handleInputChange}
+                  />
+                </Form.Item>
+                <Form.Item>
+                  <Button
+                    aria-label="reset user password"
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                    onClick={resetUserPassword}
+                  >
+                    Reset Password
+                  </Button>
+                </Form.Item>
+              </Form>
             </div>
-            <Form name="login-form" onFinishFailed={onFinishFailed}>
-              <p className="form-title">Reset Password</p>
-              <p></p>
-              <Form.Item>
-                <PasswordInput
-                  placeholder="Password"
-                  name="password"
-                  value={password}
-                  onChange={handleInputChange}
-                  onPaste={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item>
-                <PasswordInput
-                  placeholder="Confirm Password"
-                  name="password2"
-                  value={password2}
-                  onChange={handleInputChange}
-                  onPaste={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  onClick={resetUserPassword}
-                >
-                  Reset Password
-                </Button>
-              </Form.Item>
-            </Form>
           </div>
-        </div>
-      </ConfigProvider>
-    </>
+        </ConfigProvider>
+      </>
+    </DocumentTitle>
   );
 };
 

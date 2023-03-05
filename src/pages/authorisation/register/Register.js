@@ -25,6 +25,8 @@ import {
 import { Form, Button, Input, Divider, ConfigProvider, Checkbox } from "antd";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { EyeTwoTone } from "@ant-design/icons";
+import { DocumentTitle } from "react-document-title";
+
 import Card from "../../../components/card/Card";
 import PasswordInput from "../../../components/authorisation/passwordInput/PasswordInput";
 import Loader from "../../../components/loader/Loader";
@@ -154,151 +156,154 @@ const Register = () => {
   };
 
   return (
-    <>
-      <div className="login-page">
-        <div className="login-box">
-          <div className="illustration-wrapper">
-            <img src={image} alt="Login" />
-          </div>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#7FA62D",
-              },
-            }}
-          >
-            {isLoading && <Loader />}
-            <Form
-              name="login-form"
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
+    <DocumentTitle title="Register page">
+      <>
+        <div className="login-page">
+          <div className="login-box">
+            <div className="illustration-wrapper">
+              <img src={image} alt="Login" />
+            </div>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#7FA62D",
+                },
+              }}
             >
-              <p className="form-title">Register</p>
-              <p></p>
-              <Form.Item name="name">
-                <Input
-                  placeholder="Please enter your name"
-                  name="name"
-                  required
-                  value={name}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Input
-                  rules={[
-                    {
-                      type: "email",
-                      message: "The input is not valid E-mail!",
-                    },
-                    {
-                      required: true,
-                      message: "Please input your E-mail!",
-                    },
-                  ]}
-                  className="email"
-                  type="email"
-                  placeholder="Email"
-                  required
-                  name="email"
-                  value={email}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item name="password" placeholder="Password">
-                <PasswordInput
-                  placeholder="Password"
-                  name="password"
-                  value={password}
-                  onChange={handleInputChange}
-                  iconRender={(visible) =>
-                    visible ? <EyeTwoTone /> : <AiOutlineEyeInvisible />
-                  }
-                />
-              </Form.Item>
-              <Form.Item>
-                <PasswordInput
-                  placeholder="Confirm Password"
-                  name="password2"
-                  value={password2}
-                  onChange={handleInputChange}
-                  onPaste={(e) => {
-                    e.preventDefault();
-                    toast.error("Cannot paste into input field");
-                    return false;
-                  }}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Card className="form-list" cardClass="group">
-                  <ul>
-                    <li>
-                      <span className="indicator">
-                        {switchIcon(uCase)}
-                        &nbsp; Lowercase & Uppercase
-                      </span>
-                    </li>
-                    <li>
-                      <span className="indicator">
-                        {switchIcon(num)}
-                        &nbsp; Number (0-9)
-                      </span>
-                    </li>
-                    <li>
-                      <span className="indicator">
-                        {switchIcon(sChar)}
-                        &nbsp; Special Character (!@#$%^&*)
-                      </span>
-                    </li>
-                    <li>
-                      <span className="indicator">
-                        {switchIcon(passLength)}
-                        &nbsp; At least 6 Character
-                      </span>
-                    </li>
-                  </ul>
-                </Card>
-              </Form.Item>
-              .
-              <Form.Item>
-                <Divider />
-                <Checkbox type="checkbox" onClick={onCheckboxClick}>
-                  {" "}
-                  I have read and agreed to the{" "}
-                  <a href="/terms-and-conditions" className="link">
-                    Terms and Conditions
-                  </a>{" "}
-                  and the{" "}
-                  <a className="link" href="/privacy-policy">
-                    Privacy Policy
-                  </a>{" "}
-                  of MSymptoms.
-                </Checkbox>
-                <Divider />
-              </Form.Item>
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  disabled={isDisabled}
-                >
-                  Register
-                </Button>
-                <Link
-                  to="/login"
-                  className="forgotpass"
-                  onClick={navigateToLogin}
-                  style={{ color: "var(--color-red)" }}
-                >
-                  Already registered? Login
-                </Link>
-              </Form.Item>
-            </Form>
-          </ConfigProvider>
+              {isLoading && <Loader />}
+              <Form
+                name="login-form"
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+              >
+                <p className="form-title">Register</p>
+                <p></p>
+                <Form.Item name="name">
+                  <Input
+                    placeholder="Please enter your name"
+                    name="name"
+                    required
+                    value={name}
+                    onChange={handleInputChange}
+                  />
+                </Form.Item>
+                <Form.Item>
+                  <Input
+                    rules={[
+                      {
+                        type: "email",
+                        message: "The input is not valid E-mail!",
+                      },
+                      {
+                        required: true,
+                        message: "Please input your E-mail!",
+                      },
+                    ]}
+                    className="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                    name="email"
+                    value={email}
+                    onChange={handleInputChange}
+                  />
+                </Form.Item>
+                <Form.Item name="password" placeholder="Password">
+                  <PasswordInput
+                    placeholder="Password"
+                    name="password"
+                    value={password}
+                    onChange={handleInputChange}
+                    iconRender={(visible) =>
+                      visible ? <EyeTwoTone /> : <AiOutlineEyeInvisible />
+                    }
+                  />
+                </Form.Item>
+                <Form.Item>
+                  <PasswordInput
+                    placeholder="Confirm Password"
+                    name="password2"
+                    value={password2}
+                    onChange={handleInputChange}
+                    onPaste={(e) => {
+                      e.preventDefault();
+                      toast.error("Cannot paste into input field");
+                      return false;
+                    }}
+                  />
+                </Form.Item>
+                <Form.Item>
+                  <Card className="form-list" cardClass="group">
+                    <ul>
+                      <li>
+                        <span className="indicator">
+                          {switchIcon(uCase)}
+                          &nbsp; Lowercase & Uppercase
+                        </span>
+                      </li>
+                      <li>
+                        <span className="indicator">
+                          {switchIcon(num)}
+                          &nbsp; Number (0-9)
+                        </span>
+                      </li>
+                      <li>
+                        <span className="indicator">
+                          {switchIcon(sChar)}
+                          &nbsp; Special Character (!@#$%^&*)
+                        </span>
+                      </li>
+                      <li>
+                        <span className="indicator">
+                          {switchIcon(passLength)}
+                          &nbsp; At least 6 Character
+                        </span>
+                      </li>
+                    </ul>
+                  </Card>
+                </Form.Item>
+                .
+                <Form.Item>
+                  <Divider />
+                  <Checkbox type="checkbox" onClick={onCheckboxClick}>
+                    {" "}
+                    I have read and agreed to the{" "}
+                    <a href="/terms-and-conditions" className="link">
+                      Terms and Conditions
+                    </a>{" "}
+                    and the{" "}
+                    <a className="link" href="/privacy-policy">
+                      Privacy Policy
+                    </a>{" "}
+                    of MSymptoms.
+                  </Checkbox>
+                  <Divider />
+                </Form.Item>
+                <Form.Item>
+                  <Button
+                    aria-label="Register to the application"
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                    disabled={isDisabled}
+                  >
+                    Register
+                  </Button>
+                  <Link
+                    to="/login"
+                    className="forgotpass"
+                    onClick={navigateToLogin}
+                    style={{ color: "var(--color-red)" }}
+                  >
+                    Already registered? Login
+                  </Link>
+                </Form.Item>
+              </Form>
+            </ConfigProvider>
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    </DocumentTitle>
   );
 };
 

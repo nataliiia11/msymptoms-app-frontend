@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import { changePassword, logout } from "../../redux/features/auth/authSlice";
 import { Spinner } from "../../components/loader/Loader";
+import { DocumentTitle } from "react-document-title";
 import { sendAutomatedEmail } from "../../redux/features/email/emailSlice";
 import { Form, Button, ConfigProvider, Input } from "antd";
 import image from "../../assets/Sandy_Bus-02_Single-06.jpg";
@@ -75,69 +76,72 @@ const Settings = () => {
   };
 
   return (
-    <>
-      <div className="login-page">
-        <div className="login-box-profile">
-          <div className="illustration-wrapper">
-            <img src={image} alt="Woman shows her profile" />
-          </div>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#7FA62D",
-              },
-            }}
-          >
-            <Form name="login-form" onSubmit={updatePassword}>
-              <p className="form-title">Change Password</p>
-              <p></p>
-              <Form.Item>
-                <PasswordInput
-                  placeholder="Old Password"
-                  name="oldPassword"
-                  value={oldPassword}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item>
-                <PasswordInput
-                  placeholder="New Password"
-                  name="password"
-                  value={password}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-              <Form.Item name="password2">
-                <Input
-                  placeholder="Confirm new Password"
-                  name="password2"
-                  value={password2}
-                  onChange={handleInputChange}
-                />
-              </Form.Item>
-
-              {isLoading ? (
-                <Spinner />
-              ) : (
+    <DocumentTitle title="Settings">
+      <>
+        <div className="login-page">
+          <div className="login-box-profile">
+            <div className="illustration-wrapper">
+              <img src={image} alt="Woman shows her profile" />
+            </div>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#7FA62D",
+                },
+              }}
+            >
+              <Form name="login-form" onSubmit={updatePassword}>
+                <p className="form-title">Change Password</p>
+                <p></p>
                 <Form.Item>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                    onClick={updatePassword}
-                  >
-                    Change Password
-                  </Button>
+                  <PasswordInput
+                    placeholder="Old Password"
+                    name="oldPassword"
+                    value={oldPassword}
+                    onChange={handleInputChange}
+                  />
                 </Form.Item>
-              )}
-              <Form.Item>
-                <DeleteAccount />
-              </Form.Item>
-            </Form>
-          </ConfigProvider>
+                <Form.Item>
+                  <PasswordInput
+                    placeholder="New Password"
+                    name="password"
+                    value={password}
+                    onChange={handleInputChange}
+                  />
+                </Form.Item>
+                <Form.Item name="password2">
+                  <Input
+                    placeholder="Confirm new Password"
+                    name="password2"
+                    value={password2}
+                    onChange={handleInputChange}
+                  />
+                </Form.Item>
+
+                {isLoading ? (
+                  <Spinner />
+                ) : (
+                  <Form.Item>
+                    <Button
+                      aria-label="Update password"
+                      type="primary"
+                      htmlType="submit"
+                      className="login-form-button"
+                      onClick={updatePassword}
+                    >
+                      Change Password
+                    </Button>
+                  </Form.Item>
+                )}
+                <Form.Item>
+                  <DeleteAccount />
+                </Form.Item>
+              </Form>
+            </ConfigProvider>
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    </DocumentTitle>
   );
 };
 

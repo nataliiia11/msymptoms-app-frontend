@@ -59,6 +59,7 @@ const Header = () => {
             <ShowOnLogout>
               <li>
                 <Button
+                  aria-label="Navigates to login"
                   onClick={navigateToLogin}
                   className="--btn --btn-primary"
                 >
@@ -67,6 +68,7 @@ const Header = () => {
               </li>
               <li>
                 <Button
+                  aria-label="Navigates to register"
                   className="--btn --btn-secondary"
                   onClick={navigateToRegister}
                 >
@@ -84,7 +86,11 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Button onClick={logoutUser} className="--btn --btn-secondary">
+                <Button
+                  aria-label="Logout from the application"
+                  onClick={logoutUser}
+                  className="--btn --btn-secondary"
+                >
                   Logout
                 </Button>
               </li>

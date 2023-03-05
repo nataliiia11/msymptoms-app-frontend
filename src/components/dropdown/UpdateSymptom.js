@@ -47,7 +47,7 @@ const UpdateSymptom = ({ updateSymptom, symptom, handleInputChange }) => {
           >
             <Form onFinish={updateSymptom} className="form">
               <Card cardClass="card">
-                <label>Name of the symptom</label>
+                <label htmlFor="nameInput">Name of the symptom</label>
                 <SelectName
                   type="text"
                   onChange={(value) => {
@@ -59,7 +59,7 @@ const UpdateSymptom = ({ updateSymptom, symptom, handleInputChange }) => {
                     });
                   }}
                 />
-                <label>Body part</label>
+                <label htmlFor="bodyPartInput">Body part</label>
                 <SelectBodyPart
                   type="text"
                   onChange={(bodyPartValue) => {
@@ -71,7 +71,7 @@ const UpdateSymptom = ({ updateSymptom, symptom, handleInputChange }) => {
                     });
                   }}
                 />
-                <label>Intensity</label>
+                <label htmlFor="intensityInput">Intensity</label>
                 <InputNumber
                   type="text"
                   size="small"

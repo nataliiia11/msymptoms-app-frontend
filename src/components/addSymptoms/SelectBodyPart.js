@@ -57,7 +57,12 @@ const SelectBodyPart = (props) => {
                   value={name}
                   onChange={onNameChange}
                 />
-                <Button type="text" icon={<PlusOutlined />} onClick={addItem}>
+                <Button
+                  aria-label="Add the custom body part"
+                  type="text"
+                  icon={<PlusOutlined />}
+                  onClick={addItem}
+                >
                   Add custom body part
                 </Button>
               </Space>

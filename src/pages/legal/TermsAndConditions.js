@@ -1,33 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Legal.scss";
 import Parser from "html-react-parser";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form } from "antd";
-import { toast } from "react-toastify";
-import authService from "../../redux/features/auth/authService";
+import { Button, Form } from "antd";
+import { DocumentTitle } from "react-document-title";
 import "./Legal.scss";
-import { useDispatch } from "react-redux";
 
 const TermsAndConditions = () => {
-  const [check, setCheck] = useState(true);
-
   const navigate = useNavigate();
   const navigateToRegistration = () => {
     navigate("/register");
   };
   return (
-    <div>
-      <Form
-        style={{
-          backgroundColor: "#ffff",
-          marginLeft: "20px",
-          marginRight: "20px",
-          marginTop: "50px",
-        }}
-      >
-        <Form.Item>
-          {" "}
-          {Parser(`<style>
+    <DocumentTitle title="Terms and Conditions">
+      <div>
+        <Form
+          style={{
+            backgroundColor: "#ffff",
+            marginLeft: "20px",
+            marginRight: "20px",
+            marginTop: "50px",
+          }}
+        >
+          <Form.Item>
+            {" "}
+            {Parser(`<style>
   [data-custom-class='body'], [data-custom-class='body'] * {
           background: transparent !important;
         }
@@ -222,18 +219,20 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">In order to resol
       <div style="color: #595959;font-size: 14px;font-family: Arial;padding-top:16px;">
       These terms of use were created using Termly's <a style="color: rgb(48, 48, 241) !important;" href="https://termly.io/products/terms-and-conditions-generator/">Terms and Conditions Generator</a>.
       </div>`)}
-        </Form.Item>
-      </Form>
-      <div className="consentform">
-        <Button
-          className="--btn --btn-primary"
-          id="addbutton"
-          onClick={navigateToRegistration}
-        >
-          Back
-        </Button>
+          </Form.Item>
+        </Form>
+        <div className="consentform">
+          <Button
+            aria-label="Navigate to Profile or Registration"
+            className="--btn --btn-primary"
+            id="addbutton"
+            onClick={navigateToRegistration}
+          >
+            Back
+          </Button>
+        </div>
       </div>
-    </div>
+    </DocumentTitle>
   );
 };
 

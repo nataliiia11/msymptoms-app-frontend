@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { Table, DatePicker, Space, Button, ConfigProvider, Form } from "antd";
 import { CSVLink } from "react-csv";
@@ -7,9 +6,8 @@ import { useReactToPrint } from "react-to-print";
 import { FaFilePdf } from "react-icons/fa";
 import { Input } from "antd";
 import { useDispatch } from "react-redux";
-
+import { DocumentTitle } from "react-document-title";
 import {
-  RESET,
   getSymptoms,
   deleteSymptom,
   updateSymptom,
@@ -153,88 +151,98 @@ const SymptomsList = () => {
   }, []);
 
   return (
-    <>
-      <div>
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: "#7FA62D",
-            },
-          }}
-        >
-          <div className="illustration-wrapper">
-            <Form name="login-form">
-              <p className="form-title">Symptoms list</p>
-              <p></p>
-              <Form.Item>
-                {" "}
-                <RangePicker onChange={onChange} />
-              </Form.Item>
-              <Form.Item>
-                <Search
-                  placeholder="input search text"
-                  allowClear
-                  enterButton="Search"
-                  size="large"
-                  onSearch={onSearch}
-                />
-              </Form.Item>
-              <Form>
-                {" "}
-                <Form.Item className="download-buttons">
-                  <Button type="primary" className="csvbutton">
-                    <CSVLink
-                      filename={"Expense_Table.csv"}
-                      data={dataSource}
-                      onClick={() => {
-                        toast.success("The file is downloading");
-                      }}
-                    >
-                      Export to CSV
-                    </CSVLink>
-                  </Button>
-                  <Button onClick={handlePrint} className="pdfbutton">
-                    <FaFilePdf />
-                    Export to PDF
-                  </Button>
+    <DocumentTitle title="Symptoms list">
+      <>
+        <div>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#7FA62D",
+              },
+            }}
+          >
+            <div className="illustration-wrapper">
+              <Form name="login-form">
+                <p className="form-title">Symptoms list</p>
+                <p></p>
+                <Form.Item>
+                  {" "}
+                  <RangePicker onChange={onChange} />
                 </Form.Item>
+                <Form.Item>
+                  <Search
+                    placeholder="input search text"
+                    allowClear
+                    enterButton="Search"
+                    size="large"
+                    onSearch={onSearch}
+                  />
+                </Form.Item>
+                <Form>
+                  {" "}
+                  <Form.Item className="download-buttons">
+                    <Button
+                      aria-label="Dowload the csv file with the symptoms"
+                      type="primary"
+                      className="csvbutton"
+                    >
+                      <CSVLink
+                        filename={"Expense_Table.csv"}
+                        data={dataSource}
+                        onClick={() => {
+                          toast.success("The file is downloading");
+                        }}
+                      >
+                        Export to CSV
+                      </CSVLink>
+                    </Button>
+                    <Button
+                      aria-label="Opens the pdf print window with the content of the table"
+                      onClick={handlePrint}
+                      className="pdfbutton"
+                    >
+                      <FaFilePdf />
+                      Export to PDF
+                    </Button>
+                  </Form.Item>
+                </Form>
               </Form>
-            </Form>
-          </div>
-          <Space size={20}> </Space>
-          <div className="login-page-table">
-            <div className="login-box-table">
-              <div className="table">
-                <Table
-                  ref={componentRef}
-                  columns={[
-                    ...columns,
-                    {
-                      title: "Actions",
-                      key: "actions",
+            </div>
+            <Space size={20}> </Space>
+            <div className="login-page-table">
+              <div className="login-box-table">
+                <div className="table">
+                  <Table
+                    ref={componentRef}
+                    columns={[
+                      ...columns,
+                      {
+                        title: "Actions",
+                        key: "actions",
 
-                      render: (record) => {
-                        return (
-                          <>
-                            <DropdownMenu
-                              symptom={record}
-                              deleteSymptom={deleteOneSymptom}
-                              updateSymptom={updateOneSymptom}
-                              handleInputChange={handleInputChange}
-                            />
-                          </>
-                        );
+                        render: (record) => {
+                          return (
+                            <>
+                              <DropdownMenu
+                                symptom={record}
+                                deleteSymptom={deleteOneSymptom}
+                                updateSymptom={updateOneSymptom}
+                                handleInputChange={handleInputChange}
+                              />
+                            </>
+                          );
+                        },
                       },
-                    },
-                  ]}
-                  dataSource={dataSource}
-                />
+                    ]}
+                    dataSource={dataSource}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </ConfigProvider>
-      </div>
-    </>
+          </ConfigProvider>
+        </div>
+      </>
+    </DocumentTitle>
   );
 };
 

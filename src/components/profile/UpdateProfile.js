@@ -35,6 +35,7 @@ const UpdateSymptom = ({ saveProfile, profile, handleInputChange }) => {
       >
         <>
           <Button
+            aria-label="Update profile"
             type="primary"
             className="login-form-button"
             onClick={showModal}

@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Form, Button, Input, ConfigProvider } from "antd";
+import { DocumentTitle } from "react-document-title";
+
 import image from "../../../assets/Sandy_Tech-02_Single-05.jpg";
 
 import {
@@ -74,67 +76,72 @@ const LoginWithCode = () => {
   };
 
   return (
-    <>
-      <div className="login-page">
-        {isLoading && <Loader />}
+    <DocumentTitle title="Login wih code">
+      <>
+        <div className="login-page">
+          {isLoading && <Loader />}
 
-        <div className="login-box">
-          <div className="illustration-wrapper">
-            <img src={image} alt="Login" />
-          </div>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#7FA62D",
-              },
-            }}
-          >
-            <Form
-              name="login-form"
-              form={form}
-              initialValues={{
-                remember: true,
+          <div className="login-box">
+            <div className="illustration-wrapper">
+              <img src={image} alt="Login" />
+            </div>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#7FA62D",
+                },
               }}
-              onSubmit={LoginWithCode}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
             >
-              <p className="form-title">Enter Access Code</p>
-              <p></p>
-              <Form.Item>
-                <Input
-                  required
-                  name="loginCode"
-                  value={loginCode}
-                  onChange={(e) => setLoginCode(e.target.value)}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button
-                  htmlType="submit"
-                  type="primary"
-                  className="login-form-button"
-                  onClick={loginUserWithCode}
-                >
-                  Proceed To Login
-                </Button>
-              </Form.Item>
-              <Form.Item>
-                <Button
-                  type="primary"
-                  className="login-form-button"
-                  htmlType="submit"
-                  onClick={sendUserLoginCode}
-                  style={{ backgroundColor: "var(--color-red" }}
-                >
-                  Resend Code
-                </Button>
-              </Form.Item>
-            </Form>
-          </ConfigProvider>
+              <Form
+                name="login-form"
+                form={form}
+                initialValues={{
+                  remember: true,
+                }}
+                onSubmit={LoginWithCode}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+              >
+                <p className="form-title">Enter Access Code</p>
+                <p></p>
+                <Form.Item>
+                  <Input
+                    required
+                    name="loginCode"
+                    value={loginCode}
+                    onChange={(e) => setLoginCode(e.target.value)}
+                  />
+                </Form.Item>
+                <Form.Item>
+                  <Button
+                    aria-label="Click to log in"
+                    htmlType="submit"
+                    type="primary"
+                    className="login-form-button"
+                    onClick={loginUserWithCode}
+                  >
+                    Proceed To Login
+                  </Button>
+                </Form.Item>
+                <Form.Item>
+                  <Button
+                    aria-label="send login code to the email"
+                    type="primary"
+                    className="login-form-button"
+                    htmlType="submit"
+                    onClick={sendUserLoginCode}
+                    style={{ backgroundColor: "var(--color-red" }}
+                  >
+                    {" "}
+                    Resend Code
+                  </Button>
+                </Form.Item>
+              </Form>
+            </ConfigProvider>
+          </div>
         </div>
-      </div>
-    </>
+      </>
+    </DocumentTitle>
   );
 };
 
