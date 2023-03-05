@@ -11,6 +11,7 @@ import {
 
 import Card from "../../components/card/Card";
 import "./Dashboard.scss";
+import axios from "axios";
 
 const Data = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,6 +48,7 @@ const Data = () => {
       setIsLoading(false);
     } catch (error) {
       toast.error(error.message);
+      console.log(error);
     }
   };
 
@@ -55,6 +57,7 @@ const Data = () => {
     dataSource.forEach((symptom) => {
       arr.push(parseInt(symptom.intensity));
     });
+    console.log(arr);
     return arr;
   };
 
@@ -71,7 +74,7 @@ const Data = () => {
     labels: dateArr(),
     datasets: [
       {
-        label: "Intensity",
+        label: "Symptom intensity",
         data: intensityArr(),
         fill: false,
         borderColor: "#BF705E",
@@ -81,7 +84,7 @@ const Data = () => {
 
   return (
     <>
-      <div style={{ width: "40%", height: "30%" }}>
+      <div style={{ width: "50vw", marginLeft: "10vw" }}>
         <ConfigProvider
           theme={{
             token: {
@@ -90,8 +93,16 @@ const Data = () => {
           }}
         >
           <Card cardClass="card" id="cardlinedataid">
+            <h2 style={{ fontSize: "25px", marginBottom: "30px" }}>
+              Intensity
+            </h2>
+            <p style={{ fontSize: "18px", marginBottom: "30px" }}>
+              To find out the intensity of a particular symptom, enter the
+              symptom name in the Search field.
+            </p>
             <Search
-              placeholder="input search text"
+              style={{ height: "60px" }}
+              placeholder="Input the name of the symptom"
               allowClear
               enterButton="Search"
               size="small"
@@ -101,7 +112,6 @@ const Data = () => {
               data={data}
               options={{
                 responsive: true,
-                maintainAspectRatio: true,
               }}
             />
           </Card>

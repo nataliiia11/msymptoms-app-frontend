@@ -5,10 +5,14 @@ import { Doughnut } from "react-chartjs-2";
 import { toast } from "react-toastify";
 import { DatePicker, ConfigProvider } from "antd";
 import { CategoryScale } from "chart.js";
+import { Chart as ReactChart } from "react-chartjs-2";
 import StreamingPlugin from "chartjs-plugin-streaming";
 import Chart from "chart.js/auto";
 
-import { getSymptoms } from "../../redux/features/symptoms/symptomsSlice";
+import {
+  getSymptoms,
+  getSymptomsByDateRange,
+} from "../../redux/features/symptoms/symptomsSlice";
 import { useDispatch } from "react-redux";
 
 import "./Dashboard.scss";
@@ -111,7 +115,7 @@ const DataDougnut = () => {
   };
 
   return (
-    <div style={{ width: "40%", height: "20%" }}>
+    <div style={{ width: "50vw", marginLeft: "10vw" }}>
       <ConfigProvider
         theme={{
           token: {
@@ -119,8 +123,21 @@ const DataDougnut = () => {
           },
         }}
       >
-        <Card cardClass="card" id="dougnutid">
-          <RangePicker onChange={getAllSymptomsByDateRange} />
+        <Card
+          cardClass="card"
+          id="dougnutid"
+          style={{ width: "60vw", marginLeft: "10vw" }}
+        >
+          <h2 style={{ fontSize: "25px", marginBottom: "30px" }}>Symptom</h2>
+          <p style={{ fontSize: "18px", marginBottom: "30px" }}>
+            To see which symptoms were added in a certain period, select the
+            start date and the end date.
+          </p>
+          <RangePicker
+            onChange={getAllSymptomsByDateRange}
+            style={{ height: "40px", marginBottom: "30px" }}
+          />
+
           <Doughnut
             data={data}
             options={{

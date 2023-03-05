@@ -8,11 +8,7 @@ import { useDispatch } from "react-redux";
 import Card from "../../components/card/Card";
 import Chart from "chart.js/auto";
 import StreamingPlugin from "chartjs-plugin-streaming";
-import {
-  getSymptoms,
-  //  getSymptomsByName,
-  // getSymptomsByDateRange,
-} from "../../redux/features/symptoms/symptomsSlice";
+import { getSymptoms } from "../../redux/features/symptoms/symptomsSlice";
 
 import "./Dashboard.scss";
 const { RangePicker } = DatePicker;
@@ -57,6 +53,7 @@ const BodyPartDiagram = () => {
         );
 
         if (data) {
+          console.log(data);
           setDataSource(data);
           setIsLoading(false);
         } else {
@@ -118,7 +115,7 @@ const BodyPartDiagram = () => {
   };
 
   return (
-    <div style={{ width: "40%", height: "30%" }}>
+    <div style={{ width: "50vw", marginLeft: "10vw" }}>
       <ConfigProvider
         theme={{
           token: {
@@ -127,7 +124,15 @@ const BodyPartDiagram = () => {
         }}
       >
         <Card cardClass="card" id="dougnutid">
-          <RangePicker onChange={onChange} />
+          <h2 style={{ fontSize: "25px", marginBottom: "30px" }}>Body part</h2>
+          <p style={{ fontSize: "18px", marginBottom: "30px" }}>
+            To see which body part was affected in a certain period, select the
+            start date and the end date.
+          </p>
+          <RangePicker
+            onChange={onChange}
+            style={{ height: "40px", marginBottom: "30px" }}
+          />
 
           <Doughnut
             data={data}
