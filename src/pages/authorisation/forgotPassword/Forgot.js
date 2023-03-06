@@ -16,7 +16,6 @@ import { toast } from "react-toastify";
 import { Form, Button, Input, ConfigProvider } from "antd";
 import { validateEmail } from "../../../redux/features/auth/authService";
 import { forgotPassword, RESET } from "../../../redux/features/auth/authSlice";
-import { DocumentTitle } from "react-document-title";
 
 import Header from "../../../components/layout/header/Header";
 import Loader from "../../../components/loader/Loader";
@@ -57,60 +56,57 @@ const Forgot = () => {
   };
 
   return (
-    <DocumentTitle title="Forgot password">
-      <>
-        <Header />
-        <div className="login-page">
-          {isLoading && <Loader />}
+    <>
+      <Header />
+      <div className="login-page">
+        {isLoading && <Loader />}
 
-          <div className="login-box">
-            <div className="illustration-wrapper">
-              <img src={image} alt="Login" />
-            </div>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#7FA62D",
-                },
-              }}
-            >
-              <Form
-                name="login-form"
-                form={form}
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-              >
-                <p className="form-title">Forgot Password</p>
-                <p></p>
-                <Form.Item>
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    required
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Form.Item>
-                <Form.Item>
-                  <Button
-                    aria-label="Get Reset Email"
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                  >
-                    Get Reset Email
-                  </Button>
-                </Form.Item>
-              </Form>
-            </ConfigProvider>
+        <div className="login-box">
+          <div className="illustration-wrapper">
+            <img src={image} alt="Login" />
           </div>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#7FA62D",
+              },
+            }}
+          >
+            <Form
+              name="login-form"
+              form={form}
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+            >
+              <p className="form-title">Forgot Password</p>
+              <p></p>
+              <Form.Item>
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Item>
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                >
+                  Get Reset Email
+                </Button>
+              </Form.Item>
+            </Form>
+          </ConfigProvider>
         </div>
-      </>
-    </DocumentTitle>
+      </div>
+    </>
   );
 };
 

@@ -21,7 +21,6 @@ import {
   sendLoginCode,
 } from "../../../redux/features/auth/authSlice";
 import { Form, Button, Input, ConfigProvider } from "antd";
-import { DocumentTitle } from "react-document-title";
 import PasswordInput from "../../../components/authorisation/passwordInput/PasswordInput";
 import image from "../../../assets/Sandy_Tech-24_Single-02.jpg";
 import "../Auth.scss";
@@ -86,83 +85,80 @@ const Login = () => {
   };
 
   return (
-    <DocumentTitle title="Login page">
-      <>
-        <div className="login-page">
-          <div className="login-box">
-            <div className="illustration-wrapper">
-              <img src={image} alt="Login" />
-            </div>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#7FA62D",
-                },
-              }}
-            >
-              <Form
-                name="login-form"
-                form={form}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-              >
-                <p className="form-title">Welcome back</p>
-                <p>Login to the Dashboard</p>
-                <Form.Item
-                  name="name"
-                  rules={[
-                    {
-                      type: "email",
-                      message: "The input is not valid E-mail!",
-                    },
-                    {
-                      required: true,
-                      message: "Please input your E-mail!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Please enter your email"
-                    name="email"
-                    required
-                    value={email}
-                    onChange={handleInputChange}
-                  />
-                </Form.Item>
-
-                <Form.Item name="password" placeholder="Password">
-                  <PasswordInput
-                    placeholder="Password"
-                    name="password"
-                    value={password}
-                    onChange={handleInputChange}
-                  />
-                </Form.Item>
-
-                <Form.Item>
-                  <Button
-                    aria-label="Login to the application"
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                  >
-                    {" "}
-                    LOGIN
-                  </Button>
-                  <Link
-                    to="/forgot"
-                    className="forgotpass"
-                    style={{ color: "var(--color-red)", fontSize: "14px" }}
-                  >
-                    Forgot Password
-                  </Link>
-                </Form.Item>
-              </Form>
-            </ConfigProvider>
+    <>
+      <div className="login-page">
+        <div className="login-box">
+          <div className="illustration-wrapper">
+            <img src={image} alt="Login" />
           </div>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#7FA62D",
+              },
+            }}
+          >
+            <Form
+              name="login-form"
+              form={form}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+            >
+              <p className="form-title">Welcome back</p>
+              <p>Login to the Dashboard</p>
+              <Form.Item
+                name="name"
+                rules={[
+                  {
+                    type: "email",
+                    message: "The input is not valid E-mail!",
+                  },
+                  {
+                    required: true,
+                    message: "Please input your E-mail!",
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="Please enter your email"
+                  name="email"
+                  required
+                  value={email}
+                  onChange={handleInputChange}
+                />
+              </Form.Item>
+
+              <Form.Item name="password" placeholder="Password">
+                <PasswordInput
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={handleInputChange}
+                />
+              </Form.Item>
+
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                >
+                  {" "}
+                  LOGIN
+                </Button>
+                <Link
+                  to="/forgot"
+                  className="forgotpass"
+                  style={{ color: "var(--color-red)", fontSize: "14px" }}
+                >
+                  Forgot Password
+                </Link>
+              </Form.Item>
+            </Form>
+          </ConfigProvider>
         </div>
-      </>
-    </DocumentTitle>
+      </div>
+    </>
   );
 };
 

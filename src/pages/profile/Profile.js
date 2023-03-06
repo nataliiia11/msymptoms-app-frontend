@@ -12,7 +12,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import { useDispatch, useSelector } from "react-redux";
-import { DocumentTitle } from "react-document-title";
 import {
   getUser,
   selectUser,
@@ -78,68 +77,66 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <DocumentTitle title="Profile">
-      <>
-        <div className="login-page">
-          <div className="login-box-profile">
-            <div className="illustration-wrapper">
-              <img src={image} alt="Woman shows her profile" />
-            </div>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#7FA62D",
-                },
-              }}
-            >
-              <Form name="login-form" form={form}>
-                <p className="form-title">Profile</p>
-                <p></p>
-                <Form.Item>
-                  <ul>
-                    <h4 style={{ color: "#d3d3d3" }}>Name </h4>
-                    <div
-                      style={{
-                        marginBottom: "20px",
-                      }}
-                    >
-                      <li>
-                        <h3>{name}</h3>
-                      </li>
-                    </div>
-                    <h4 style={{ color: "#d3d3d3" }}>Email </h4>
-                    <div
-                      style={{
-                        marginBottom: "20px",
-                      }}
-                    >
-                      <li>
-                        <h3>{email}</h3>
-                      </li>
-                    </div>
-                    <h4 style={{ color: "#d3d3d3" }}>Bio </h4>
-                    <div
-                      style={{
-                        marginBottom: "20px",
-                      }}
-                    >
-                      <li>
-                        <h3>{bio}</h3>
-                      </li>
-                    </div>
-                  </ul>
-                  <UpdateProfile
-                    saveProfile={saveProfile}
-                    handleInputChange={handleInputChange}
-                    profile={profile}
-                  />
-                </Form.Item>
-              </Form>
-            </ConfigProvider>
+    <>
+      <div className="login-page">
+        <div className="login-box-profile">
+          <div className="illustration-wrapper">
+            <img src={image} alt="Woman shows her profile" />
           </div>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#7FA62D",
+              },
+            }}
+          >
+            <Form name="login-form" form={form}>
+              <p className="form-title">Profile</p>
+              <p></p>
+              <Form.Item>
+                <ul>
+                  <h4 style={{ color: "#d3d3d3" }}>Name </h4>
+                  <div
+                    style={{
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <li>
+                      <h3>{name}</h3>
+                    </li>
+                  </div>
+                  <h4 style={{ color: "#d3d3d3" }}>Email </h4>
+                  <div
+                    style={{
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <li>
+                      <h3>{email}</h3>
+                    </li>
+                  </div>
+                  <h4 style={{ color: "#d3d3d3" }}>Bio </h4>
+                  <div
+                    style={{
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <li>
+                      <h3>{bio}</h3>
+                    </li>
+                  </div>
+                </ul>
+                <UpdateProfile
+                  saveProfile={saveProfile}
+                  handleInputChange={handleInputChange}
+                  profile={profile}
+                />
+              </Form.Item>
+            </Form>
+          </ConfigProvider>
         </div>
-      </>
-    </DocumentTitle>
+      </div>
+    </>
   );
 };
 

@@ -40,9 +40,7 @@ const SymptomsForm = ({ createSymptom, handleInputChange }) => {
               <p className="form-title">Add symptom</p>
               <p></p>
               <Form.Item name="name">
-                <label htmlFor="namedInput">
-                  Please select or add a symptom name
-                </label>
+                <label>Please select or add a symptom name</label>
                 <SelectName
                   type="text"
                   onChange={(value) => {
@@ -57,9 +55,7 @@ const SymptomsForm = ({ createSymptom, handleInputChange }) => {
               </Form.Item>
 
               <Form.Item name="bodyPart">
-                <label htmlFor="bodyPartInput">
-                  Please select or add a body part
-                </label>
+                <label>Please select or add a body part</label>
 
                 <SelectBodyPart
                   type="text"
@@ -75,9 +71,7 @@ const SymptomsForm = ({ createSymptom, handleInputChange }) => {
               </Form.Item>
 
               <Form.Item name="severity" styles={{ display: "block" }}>
-                <label htmlFor="IntensityInput">
-                  Please select intensity of the symptom
-                </label>
+                <label>Please select intensity of the symptom</label>
 
                 <InputNumber
                   type="text"
@@ -100,7 +94,6 @@ const SymptomsForm = ({ createSymptom, handleInputChange }) => {
 
               <Form.Item>
                 <Button
-                  aria-label="Add the symptom"
                   type="primary"
                   htmlType="submit"
                   className="login-form-button"

@@ -4,7 +4,6 @@ import Symptom from "../../components/addSymptoms/Symptom";
 import SymptomsForm from "../../components/addSymptoms/SymptomsForm";
 import { useDispatch } from "react-redux";
 import { RESET } from "../../redux/features/symptoms/symptomsSlice";
-import { DocumentTitle } from "react-document-title";
 
 import {
   getSymptoms,
@@ -140,57 +139,55 @@ const AddSymptoms = () => {
   }, []);
 
   return (
-    <DocumentTitle title="Add symptom">
-      <div>
-        <div className="symptomslistcontainer">
-          <div className="inputform">
-            <SymptomsForm
-              className="inputform"
-              name={name}
-              handleInputChange={handleInputChange}
-              createSymptom={createOneSymptom}
-              isEditing={isEditing}
-            />
-          </div>
-          <h1>Recent symptoms</h1>
-          <div className="text">
-            <p>
-              In this section you can see all symptoms you added in the last 24
-              hours.
-            </p>
-          </div>
-          <div className="symptomcards">
-            {!isLoading && symptoms.length === 0 ? (
-              <p className="--py">No symptoms added. Please add a symptom.</p>
-            ) : (
-              <>
-                {symptoms.map((symptom, index) => {
-                  return (
-                    <>
-                      <div className="symptomcard">
-                        <Symptom
-                          key={index}
-                          symptom={symptom}
-                          bodyPart={symptom.bodyPart}
-                          index={index}
-                          deleteSymptom={deleteOneSymptom}
-                          updateSymptom={updateOneSymptom}
-                          intensity={symptom.intensity}
-                          onChange={(value) => this.changeHandler(value)}
-                          name={symptom.name}
-                          handleInputChange={handleInputChange}
-                          getSingleSymptom={getSingleSymptom}
-                        />
-                      </div>
-                    </>
-                  );
-                })}
-              </>
-            )}
-          </div>
+    <div>
+      <div className="symptomslistcontainer">
+        <div className="inputform">
+          <SymptomsForm
+            className="inputform"
+            name={name}
+            handleInputChange={handleInputChange}
+            createSymptom={createOneSymptom}
+            isEditing={isEditing}
+          />
+        </div>
+        <h1>Recent symptoms</h1>
+        <div className="text">
+          <p>
+            In this section you can see all symptoms you added in the last 24
+            hours.
+          </p>
+        </div>
+        <div className="symptomcards">
+          {!isLoading && symptoms.length === 0 ? (
+            <p className="--py">No symptoms added. Please add a symptom.</p>
+          ) : (
+            <>
+              {symptoms.map((symptom, index) => {
+                return (
+                  <>
+                    <div className="symptomcard">
+                      <Symptom
+                        key={index}
+                        symptom={symptom}
+                        bodyPart={symptom.bodyPart}
+                        index={index}
+                        deleteSymptom={deleteOneSymptom}
+                        updateSymptom={updateOneSymptom}
+                        intensity={symptom.intensity}
+                        onChange={(value) => this.changeHandler(value)}
+                        name={symptom.name}
+                        handleInputChange={handleInputChange}
+                        getSingleSymptom={getSingleSymptom}
+                      />
+                    </div>
+                  </>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
-    </DocumentTitle>
+    </div>
   );
 };
 

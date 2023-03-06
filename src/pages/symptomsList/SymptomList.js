@@ -6,7 +6,6 @@ import { useReactToPrint } from "react-to-print";
 import { FaFilePdf } from "react-icons/fa";
 import { Input } from "antd";
 import { useDispatch } from "react-redux";
-import { DocumentTitle } from "react-document-title";
 import {
   getSymptoms,
   deleteSymptom,
@@ -151,98 +150,92 @@ const SymptomsList = () => {
   }, []);
 
   return (
-    <DocumentTitle title="Symptoms list">
-      <>
-        <div>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: "#7FA62D",
-              },
-            }}
-          >
-            <div className="illustration-wrapper">
-              <Form name="login-form">
-                <p className="form-title">Symptoms list</p>
-                <p></p>
-                <Form.Item>
-                  {" "}
-                  <RangePicker onChange={onChange} />
-                </Form.Item>
-                <Form.Item>
-                  <Search
-                    placeholder="input search text"
-                    allowClear
-                    enterButton="Search"
-                    size="large"
-                    onSearch={onSearch}
-                  />
-                </Form.Item>
-                <Form>
-                  {" "}
-                  <Form.Item className="download-buttons">
-                    <Button
-                      aria-label="Dowload the csv file with the symptoms"
-                      type="primary"
-                      className="csvbutton"
+    <>
+      <div>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#7FA62D",
+            },
+          }}
+        >
+          <div className="illustration-wrapper">
+            <Form name="login-form">
+              <p className="form-title">Symptoms list</p>
+              <p></p>
+              <Form.Item>
+                {" "}
+                <RangePicker onChange={onChange} />
+              </Form.Item>
+              <Form.Item>
+                <Search
+                  placeholder="input search text"
+                  allowClear
+                  enterButton="Search"
+                  size="large"
+                  onSearch={onSearch}
+                />
+              </Form.Item>
+              <Form>
+                {" "}
+                <Form.Item className="download-buttons">
+                  <Button type="primary" className="csvbutton">
+                    <CSVLink
+                      filename={"Expense_Table.csv"}
+                      data={dataSource}
+                      onClick={() => {
+                        toast.success("The file is downloading");
+                      }}
                     >
-                      <CSVLink
-                        filename={"Expense_Table.csv"}
-                        data={dataSource}
-                        onClick={() => {
-                          toast.success("The file is downloading");
-                        }}
-                      >
-                        Export to CSV
-                      </CSVLink>
-                    </Button>
-                    <Button
-                      aria-label="Opens the pdf print window with the content of the table"
-                      onClick={handlePrint}
-                      className="pdfbutton"
-                    >
-                      <FaFilePdf />
-                      Export to PDF
-                    </Button>
-                  </Form.Item>
-                </Form>
+                      Export to CSV
+                    </CSVLink>
+                  </Button>
+                  <Button
+                    aria-label="Opens the pdf print window with the content of the table"
+                    onClick={handlePrint}
+                    className="pdfbutton"
+                  >
+                    <FaFilePdf />
+                    Export to PDF
+                  </Button>
+                </Form.Item>
               </Form>
-            </div>
-            <Space size={20}> </Space>
-            <div className="login-page-table">
-              <div className="login-box-table">
-                <div className="table">
-                  <Table
-                    ref={componentRef}
-                    columns={[
-                      ...columns,
-                      {
-                        title: "Actions",
-                        key: "actions",
+            </Form>
+          </div>
+          <Space size={20}> </Space>
+          <div className="login-page-table">
+            <div className="login-box-table">
+              <div className="table">
+                <Table
+                  ref={componentRef}
+                  columns={[
+                    ...columns,
+                    {
+                      title: "Actions",
+                      key: "actions",
 
-                        render: (record) => {
-                          return (
-                            <>
-                              <DropdownMenu
-                                symptom={record}
-                                deleteSymptom={deleteOneSymptom}
-                                updateSymptom={updateOneSymptom}
-                                handleInputChange={handleInputChange}
-                              />
-                            </>
-                          );
-                        },
+                      render: (record) => {
+                        return (
+                          <>
+                            <DropdownMenu
+                              symptom={record}
+                              deleteSymptom={deleteOneSymptom}
+                              updateSymptom={updateOneSymptom}
+                              handleInputChange={handleInputChange}
+                            />
+                          </>
+                        );
                       },
-                    ]}
-                    dataSource={dataSource}
-                  />
-                </div>
+                    },
+                  ]}
+                  dataSource={dataSource}
+                />
               </div>
             </div>
-          </ConfigProvider>
-        </div>
-      </>
-    </DocumentTitle>
+          </div>
+        </ConfigProvider>
+      </div>
+    </>
   );
 };
 

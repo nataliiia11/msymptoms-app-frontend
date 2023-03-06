@@ -65,7 +65,6 @@ const DeleteAccount = () => {
       >
         <Form>
           <Button
-            aria-label="Delete account"
             onClick={showModal}
             styles={{ backgroundColor: "var(--color-red)" }}
             className="--btn --btn-danger"

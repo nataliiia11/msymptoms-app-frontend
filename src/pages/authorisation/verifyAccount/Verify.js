@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loader from "../../../components/loader/Loader";
 import { Button, Form, ConfigProvider } from "antd";
-import { DocumentTitle } from "react-document-title";
 import { verifyUser, RESET } from "../../../redux/features/auth/authSlice";
 import image from "../../../assets/Sandy_Tech-02_Single-05.jpg";
 import { toast } from "react-toastify";
@@ -41,45 +40,43 @@ const Verify = () => {
   };
 
   return (
-    <DocumentTitle title="Verify account page">
-      <>
-        <div className="login-page">
-          {isLoading && <Loader />}
-          <div className="login-box">
-            <div className="illustration-wrapper">
-              <img src={image} alt="Login" />
-            </div>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#7FA62D",
-                },
-              }}
-            >
-              <Form
-                name="login-form"
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-              >
-                <p className="form-title">Account Verification</p>
-                <p>To verify your account, click the button below...</p>
-
-                <Form.Item>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                    onClick={verifyAccount}
-                  >
-                    Verify Account
-                  </Button>
-                </Form.Item>
-              </Form>
-            </ConfigProvider>
+    <>
+      <div className="login-page">
+        {isLoading && <Loader />}
+        <div className="login-box">
+          <div className="illustration-wrapper">
+            <img src={image} alt="Login" />
           </div>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: "#7FA62D",
+              },
+            }}
+          >
+            <Form
+              name="login-form"
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+            >
+              <p className="form-title">Account Verification</p>
+              <p>To verify your account, click the button below...</p>
+
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                  onClick={verifyAccount}
+                >
+                  Verify Account
+                </Button>
+              </Form.Item>
+            </Form>
+          </ConfigProvider>
         </div>
-      </>
-    </DocumentTitle>
+      </div>
+    </>
   );
 };
 
