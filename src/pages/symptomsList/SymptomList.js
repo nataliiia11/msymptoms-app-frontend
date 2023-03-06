@@ -111,7 +111,7 @@ const SymptomsList = () => {
       const updateSymptomData = { id, formData };
       await dispatch(updateSymptom(updateSymptomData));
       setFormData({ ...formData, name: "" });
-      getSymptoms();
+      getAllSymptoms();
     } catch (error) {
       toast.error(error.message);
     }
@@ -121,7 +121,7 @@ const SymptomsList = () => {
     try {
       await dispatch(deleteSymptom(id));
 
-      getSymptoms();
+      getAllSymptoms();
     } catch (error) {
       toast.error(error.message);
     }
