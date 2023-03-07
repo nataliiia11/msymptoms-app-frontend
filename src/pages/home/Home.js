@@ -33,7 +33,7 @@ const Home2 = () => {
           >
             <Form name="login-form">
               <p className="form-title">
-                MSypmtoms. Get your disease under control.
+                MSymptoms. Get your disease under control.
               </p>
               <p></p>
               <Form.Item>

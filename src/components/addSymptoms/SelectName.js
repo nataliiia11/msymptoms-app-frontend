@@ -26,7 +26,7 @@ const SelectName = (props) => {
   return (
     <div className={styles.symptomsformselect}>
       <Select
-        style={{ width: "60vw" }}
+        align={{ offset: [-40, 4] }}
         className="select"
         placeholder="Please select the symptom"
         onChange={props.onChange}

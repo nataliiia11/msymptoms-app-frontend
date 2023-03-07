@@ -131,7 +131,7 @@ export const responseCreateSymptom = async (formData) => {
 };
 
 export const responseUpdateSymptom = async (id, formData) => {
-  const response = await axios.post(API_URL + `symptoms/${id}`, formData);
+  const response = await axios.put(API_URL + `symptoms/${id}`, formData);
   return response;
 };
 
