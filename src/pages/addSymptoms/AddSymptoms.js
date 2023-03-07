@@ -74,7 +74,7 @@ const AddSymptoms = () => {
   const deleteOneSymptom = async (id) => {
     try {
       await dispatch(deleteSymptom(id));
-      getAllSymptoms();
+      getAllSymptomsToday();
     } catch (error) {
       toast.error(error.message);
     }
@@ -89,7 +89,7 @@ const AddSymptoms = () => {
       await dispatch(updateSymptom(updateSymptomData));
       setFormData({ ...formData, name: "" });
       setIsEditing(false);
-      getAllSymptoms();
+      getAllSymptomsToday();
     } catch (error) {
       toast.error(error.message);
     }
@@ -118,7 +118,7 @@ const AddSymptoms = () => {
       await dispatch(createSymptom(formData));
 
       toast.success("Symptom added successfully");
-      getAllSymptoms();
+      getAllSymptomsToday();
 
       //clean the form
       setFormData({
